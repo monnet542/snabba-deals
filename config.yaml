@@ -1,0 +1,40 @@
+amazon:
+  de:
+    domain: "amazon.de"
+    bestsellers_url: "https://www.amazon.de/gp/bestsellers"
+    affiliate_tag: "plantncatch-21"
+  us:
+    domain: "amazon.com"
+    bestsellers_url: "https://www.amazon.com/gp/bestsellers"
+    affiliate_tag: ""  # TODO: Add your US Associate tag
+
+  categories_limit: 5          # Top-level categories to scrape
+  products_per_category: 10    # Products per category page
+  daily_pin_count: 10          # Pins to create per day
+  min_rating: 4.0              # Minimum star rating
+  dedup_days: 30               # Don't re-post same ASIN within this many days
+
+pinterest:
+  board_mapping:
+    default: "Top Deals"
+    "Küche & Haushalt": "Küche & Haushalt"
+    "Kitchen & Dining": "Kitchen & Dining"
+    "Elektronik & Foto": "Tech Deals"
+    "Electronics": "Tech Deals"
+    "Bücher": "Bücher"
+    "Books": "Books"
+    "Sport & Freizeit": "Sport & Fitness"
+    "Sports & Outdoors": "Sports & Fitness"
+
+image_generation:
+  model: "dall-e-3"
+  size: "1024x1024"
+  quality: "standard"  # standard=$0.04, hd=$0.08
+
+content:
+  model: "claude-sonnet-4-20250514"
+  hashtag_count: 10
+
+site:
+  base_url: "https://yourusername.github.io/snabba-deals"  # TODO: Update after GitHub Pages setup
+  name: "Snabba Deals"
