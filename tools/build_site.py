@@ -12,6 +12,7 @@ from datetime import datetime
 from pathlib import Path
 from string import Template
 
+import requests
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -65,15 +66,20 @@ def build_product_page(product, config, site_base_url):
     page_filename = f"{asin}.html"
     page_url = f"{site_base_url}/products/{page_filename}"
 
-    # Image: use pin_image if available, otherwise Amazon product image
+    # Image: download Amazon product image locally
     image_url = product.get("image_url", "")
-
-    # If we have a locally generated image, copy it to site/images/
-    pin_image_path = product.get("pin_image_path")
-    if pin_image_path and os.path.exists(pin_image_path):
-        img_dest = SITE_DIR / "images" / f"{asin}.png"
-        shutil.copy2(pin_image_path, img_dest)
-        image_url = f"{site_base_url}/images/{asin}.png"
+    if image_url:
+        img_dest = SITE_DIR / "images" / f"{asin}.jpg"
+        if not img_dest.exists():
+            try:
+                resp = requests.get(image_url, timeout=10)
+                resp.raise_for_status()
+                with open(img_dest, "wb") as img_f:
+                    img_f.write(resp.content)
+            except Exception as e:
+                print(f"    [WARN] Could not download image for {asin}: {e}")
+        if img_dest.exists():
+            image_url = f"{site_base_url}/images/{asin}.jpg"
 
     # Price formatting
     price = product.get("price")
