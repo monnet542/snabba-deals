@@ -120,25 +120,9 @@ def run_pipeline(dry_run=False):
             results["errors"].append(f"Content: {e}")
             log_step("Content", "error", str(e))
 
-    # Step 4: Generate Pin Images
-    print("\nSTEP 4: Generating pin images...")
-    openai_key = os.getenv("OPENAI_API_KEY")
-    if not openai_key:
-        print("  [SKIP] No OPENAI_API_KEY — pins will be posted without custom images")
-        results["steps"]["images"] = {"status": "skipped", "reason": "no API key"}
-    elif dry_run:
-        print("  [SKIP] Dry run — skipping image generation ($$$)")
-        results["steps"]["images"] = {"status": "skipped", "reason": "dry run"}
-    else:
-        try:
-            from generate_pin_image import main as image_main
-            image_main()
-            results["steps"]["images"] = {"status": "ok"}
-            log_step("Images", "ok", "Generated successfully")
-        except Exception as e:
-            results["steps"]["images"] = {"status": "error", "error": str(e)}
-            results["errors"].append(f"Images: {e}")
-            log_step("Images", "error", str(e))
+    # Step 4: Images — skipped, build_site.py downloads Amazon product images directly
+    print("\nSTEP 4: Images — using Amazon product photos (downloaded by build_site)")
+    results["steps"]["images"] = {"status": "skipped", "reason": "using Amazon product images"}
 
     # Step 5: Build Website + RSS Feed
     print("\nSTEP 5: Building website + RSS feed...")
@@ -155,6 +139,18 @@ def run_pipeline(dry_run=False):
         results["errors"].append(f"Build Site: {e}")
         log_step("Build Site", "error", str(e))
         traceback.print_exc()
+
+    # Step 5b: Build Pinterest catalog feed
+    print("\nSTEP 5b: Building Pinterest catalog feed...")
+    try:
+        from build_catalog_feed import main as catalog_main
+        catalog_main()
+        results["steps"]["catalog_feed"] = {"status": "ok"}
+        log_step("Catalog Feed", "ok", "Generated successfully")
+    except Exception as e:
+        results["steps"]["catalog_feed"] = {"status": "error", "error": str(e)}
+        results["errors"].append(f"Catalog Feed: {e}")
+        log_step("Catalog Feed", "error", str(e))
 
     # Step 6: Deploy to GitHub Pages (if git is configured)
     print("\nSTEP 6: Deploying site...")

@@ -1,16 +1,16 @@
 """
 Site Deployer
-Pushes the site/ directory to GitHub Pages.
-Uses a separate gh-pages branch for deployment.
+Commits docs/ changes and pushes to GitHub.
+GitHub Pages is configured to serve from /docs on the main branch.
 """
 
-import os
 import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE_DIR = ROOT / "site"
+SITE_DIR = ROOT / "docs"
 
 
 def run_cmd(cmd, cwd=None):
@@ -26,37 +26,36 @@ def run_cmd(cmd, cwd=None):
 
 def main():
     if not SITE_DIR.exists():
-        print("[ERROR] site/ directory does not exist. Run build_site.py first.")
+        print("[ERROR] docs/ directory does not exist. Run build_site.py first.")
         return False
 
-    # Check if gh-pages branch exists, create if not
-    result = run_cmd("git branch --list gh-pages")
-    if "gh-pages" not in result.stdout:
-        print("  Creating gh-pages branch...")
-        # Create an orphan gh-pages branch
-        run_cmd("git checkout --orphan gh-pages", cwd=str(SITE_DIR))
-        run_cmd("git rm -rf .", cwd=str(SITE_DIR))
+    today = datetime.now().strftime("%Y-%m-%d")
 
-    # Use git worktree or subtree push approach
-    # Simplest: use ghp-import if available, otherwise manual approach
-    print("  Deploying site/ to gh-pages branch...")
+    # Check if there are changes to commit
+    run_cmd("git add docs/")
+    status = run_cmd("git status --porcelain docs/")
 
-    # Copy site contents to a temp deploy process using subtree
-    result = run_cmd('git add site/ && git subtree push --prefix site origin gh-pages')
-
-    if result.returncode == 0:
-        print("  Site deployed to GitHub Pages!")
+    if not status.stdout.strip():
+        print("  No changes to deploy.")
         return True
-    else:
-        # Fallback: manual approach
-        print("  Subtree push failed. Trying manual deploy...")
-        print("  You can deploy manually:")
-        print("    1. Push this repo to GitHub")
-        print("    2. Go to Settings > Pages")
-        print("    3. Set source to 'Deploy from branch' > 'main' > '/site'")
-        print("  Or install ghp-import: pip install ghp-import")
-        print("    Then run: ghp-import -p site/")
+
+    # Commit changes
+    commit_msg = f"Update deals {today}"
+    result = run_cmd(f'git commit -m "{commit_msg}"')
+    if result.returncode != 0:
+        print(f"  [ERROR] Commit failed: {result.stderr.strip()}")
         return False
+    print(f"  Committed: {commit_msg}")
+
+    # Push to origin
+    result = run_cmd("git push origin main")
+    if result.returncode != 0:
+        print(f"  [ERROR] Push failed: {result.stderr.strip()}")
+        print("  You may need to push manually: git push origin main")
+        return False
+
+    print("  Pushed to GitHub. Site will update in ~1 minute.")
+    return True
 
 
 if __name__ == "__main__":
