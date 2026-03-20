@@ -15,7 +15,7 @@ from string import Template
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE_DIR = ROOT / "site"
+SITE_DIR = ROOT / "docs"
 TEMPLATES_DIR = ROOT / "tools" / "templates"
 
 
