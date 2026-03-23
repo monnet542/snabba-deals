@@ -68,12 +68,14 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; }
+        .skip-link { position: absolute; top: -40px; left: 0; background: #e63946; color: white; padding: 8px 16px; z-index: 100; font-size: 0.9em; }
+        .skip-link:focus { top: 0; }
         .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
         header { text-align: center; padding: 40px 20px; }
         header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
         header p { color: #666; font-size: 1.1em; }
         .seo-intro { max-width: 700px; margin: 0 auto 30px; text-align: center; color: #555; font-size: 1em; line-height: 1.6; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 20px 0; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; padding: 20px 0; }
         .card {
             background: white; border-radius: 12px; overflow: hidden;
             box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.2s;
@@ -94,11 +96,12 @@
     </style>
 </head>
 <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
     <header>
         <h1>⚡ Snabba Deals</h1>
         <p>Täglich kuratierte Top-Deals und Trending-Produkte von Amazon</p>
     </header>
-    <div class="container">
+    <main id="main" class="container">
         <p class="seo-intro">
             Willkommen bei Snabba Deals – deiner täglichen Quelle für die besten Amazon-Angebote.
             Wir durchsuchen jeden Tag die Amazon-Bestseller nach Schnäppchen bei Elektronik, Smart Home,
@@ -109,7 +112,7 @@
         <div class="product-grid">
             
         <a class="card" href="products/B09B8X9RGM.html" title="Echo Dot: Gigantischer Sound trifft auf smarte Alexa-Power! 🔊✨ – Jetzt günstig kaufen">
-            <img src="https://monnet542.github.io/snabba-deals/images/B09B8X9RGM.jpg" alt="Echo Dot: Gigantischer Sound trifft auf smarte Alexa-Power! 🔊✨ – Top-Deal auf Amazon" loading="lazy">
+            <img src="https://monnet542.github.io/snabba-deals/images/B09B8X9RGM.jpg" alt="Echo Dot: Gigantischer Sound trifft auf smarte Alexa-Power! 🔊✨ – Top-Deal auf Amazon" loading="lazy" width="280" height="200">
             <div class="card-body">
                 <h3 class="card-title">Echo Dot: Gigantischer Sound trifft auf smarte Alexa-Power! 🔊✨</h3>
                 <div class="card-price">EUR 64.99</div>
@@ -117,7 +120,7 @@
         </a>
         
         <a class="card" href="products/B0CQMWQDH4.html" title="Verwandle dein Wohnzimmer in ein Smart-Entertainment-Zentrum für nur 44,99€! – Jetzt günstig kaufen">
-            <img src="https://monnet542.github.io/snabba-deals/images/B0CQMWQDH4.jpg" alt="Verwandle dein Wohnzimmer in ein Smart-Entertainment-Zentrum für nur 44,99€! – Top-Deal auf Amazon" loading="lazy">
+            <img src="https://monnet542.github.io/snabba-deals/images/B0CQMWQDH4.jpg" alt="Verwandle dein Wohnzimmer in ein Smart-Entertainment-Zentrum für nur 44,99€! – Top-Deal auf Amazon" loading="lazy" width="280" height="200">
             <div class="card-body">
                 <h3 class="card-title">Verwandle dein Wohnzimmer in ein Smart-Entertainment-Zentrum für nur 44,99€!</h3>
                 <div class="card-price">EUR 44.99</div>
@@ -125,7 +128,7 @@
         </a>
         
         <a class="card" href="products/B0F7ZFWVTC.html" title="🔥 Fire TV Stick 4K Plus: Dein Streaming wird nie wieder dasselbe sein! – Jetzt günstig kaufen">
-            <img src="https://monnet542.github.io/snabba-deals/images/B0F7ZFWVTC.jpg" alt="🔥 Fire TV Stick 4K Plus: Dein Streaming wird nie wieder dasselbe sein! – Top-Deal auf Amazon" loading="lazy">
+            <img src="https://monnet542.github.io/snabba-deals/images/B0F7ZFWVTC.jpg" alt="🔥 Fire TV Stick 4K Plus: Dein Streaming wird nie wieder dasselbe sein! – Top-Deal auf Amazon" loading="lazy" width="280" height="200">
             <div class="card-body">
                 <h3 class="card-title">🔥 Fire TV Stick 4K Plus: Dein Streaming wird nie wieder dasselbe sein!</h3>
                 <div class="card-price">EUR 69.99</div>
@@ -133,7 +136,7 @@
         </a>
         
         <a class="card" href="products/B01LXPJCQN.html" title="FRITZ!Box 7490 Router für nur 31,3€ - Blitzschnelles WLAN für dein Zuhause! – Jetzt günstig kaufen">
-            <img src="https://monnet542.github.io/snabba-deals/images/B01LXPJCQN.jpg" alt="FRITZ!Box 7490 Router für nur 31,3€ - Blitzschnelles WLAN für dein Zuhause! – Top-Deal auf Amazon" loading="lazy">
+            <img src="https://monnet542.github.io/snabba-deals/images/B01LXPJCQN.jpg" alt="FRITZ!Box 7490 Router für nur 31,3€ - Blitzschnelles WLAN für dein Zuhause! – Top-Deal auf Amazon" loading="lazy" width="280" height="200">
             <div class="card-body">
                 <h3 class="card-title">FRITZ!Box 7490 Router für nur 31,3€ - Blitzschnelles WLAN für dein Zuhause!</h3>
                 <div class="card-price">EUR 31.30</div>
@@ -141,7 +144,7 @@
         </a>
         
         <a class="card" href="products/B0BGFMLN1W.html" title="iPhone SE 3. Gen für nur 204€! Generalüberholt &amp; wie neu ✨ – Jetzt günstig kaufen">
-            <img src="https://monnet542.github.io/snabba-deals/images/B0BGFMLN1W.jpg" alt="iPhone SE 3. Gen für nur 204€! Generalüberholt &amp; wie neu ✨ – Top-Deal auf Amazon" loading="lazy">
+            <img src="https://monnet542.github.io/snabba-deals/images/B0BGFMLN1W.jpg" alt="iPhone SE 3. Gen für nur 204€! Generalüberholt &amp; wie neu ✨ – Top-Deal auf Amazon" loading="lazy" width="280" height="200">
             <div class="card-body">
                 <h3 class="card-title">iPhone SE 3. Gen für nur 204€! Generalüberholt &amp; wie neu ✨</h3>
                 <div class="card-price">EUR 204.49</div>
@@ -149,7 +152,7 @@
         </a>
         
         <a class="card" href="products/B0CVJ23L79.html" title="iPhone 15 für unter 450€? Generalüberholt bedeutet smarte Ersparnis! 📱✨ – Jetzt günstig kaufen">
-            <img src="https://monnet542.github.io/snabba-deals/images/B0CVJ23L79.jpg" alt="iPhone 15 für unter 450€? Generalüberholt bedeutet smarte Ersparnis! 📱✨ – Top-Deal auf Amazon" loading="lazy">
+            <img src="https://monnet542.github.io/snabba-deals/images/B0CVJ23L79.jpg" alt="iPhone 15 für unter 450€? Generalüberholt bedeutet smarte Ersparnis! 📱✨ – Top-Deal auf Amazon" loading="lazy" width="280" height="200">
             <div class="card-body">
                 <h3 class="card-title">iPhone 15 für unter 450€? Generalüberholt bedeutet smarte Ersparnis! 📱✨</h3>
                 <div class="card-price">EUR 442.62</div>
@@ -157,7 +160,7 @@
         </a>
         
         <a class="card" href="products/B00992CF6W.html" title="Minecraft - Endlose Kreativität für nur 6,99€! Baue deine Traumwelt ✨🎮 – Jetzt günstig kaufen">
-            <img src="https://monnet542.github.io/snabba-deals/images/B00992CF6W.jpg" alt="Minecraft - Endlose Kreativität für nur 6,99€! Baue deine Traumwelt ✨🎮 – Top-Deal auf Amazon" loading="lazy">
+            <img src="https://monnet542.github.io/snabba-deals/images/B00992CF6W.jpg" alt="Minecraft - Endlose Kreativität für nur 6,99€! Baue deine Traumwelt ✨🎮 – Top-Deal auf Amazon" loading="lazy" width="280" height="200">
             <div class="card-body">
                 <h3 class="card-title">Minecraft - Endlose Kreativität für nur 6,99€! Baue deine Traumwelt ✨🎮</h3>
                 <div class="card-price">EUR 6.99</div>
@@ -165,7 +168,7 @@
         </a>
         
         <a class="card" href="products/B09DYWZ13S.html" title="Spielerisch Lesen lernen: Antolin Lesespiele macht Kindern das Lernen zum Vergnügen! 📚✨ – Jetzt günstig kaufen">
-            <img src="https://monnet542.github.io/snabba-deals/images/B09DYWZ13S.jpg" alt="Spielerisch Lesen lernen: Antolin Lesespiele macht Kindern das Lernen zum Vergnügen! 📚✨ – Top-Deal auf Amazon" loading="lazy">
+            <img src="https://monnet542.github.io/snabba-deals/images/B09DYWZ13S.jpg" alt="Spielerisch Lesen lernen: Antolin Lesespiele macht Kindern das Lernen zum Vergnügen! 📚✨ – Top-Deal auf Amazon" loading="lazy" width="280" height="200">
             <div class="card-body">
                 <h3 class="card-title">Spielerisch Lesen lernen: Antolin Lesespiele macht Kindern das Lernen zum Vergnügen! 📚✨</h3>
                 <div class="card-price">EUR 2.99</div>
@@ -173,7 +176,7 @@
         </a>
         
         <a class="card" href="products/B0FT1PHNXH.html" title="Süßes Puppen Anzieh-Spiel für Mädchen - Kreativität &amp; Spaß garantiert! 💕 – Jetzt günstig kaufen">
-            <img src="https://monnet542.github.io/snabba-deals/images/B0FT1PHNXH.jpg" alt="Süßes Puppen Anzieh-Spiel für Mädchen - Kreativität &amp; Spaß garantiert! 💕 – Top-Deal auf Amazon" loading="lazy">
+            <img src="https://monnet542.github.io/snabba-deals/images/B0FT1PHNXH.jpg" alt="Süßes Puppen Anzieh-Spiel für Mädchen - Kreativität &amp; Spaß garantiert! 💕 – Top-Deal auf Amazon" loading="lazy" width="280" height="200">
             <div class="card-body">
                 <h3 class="card-title">Süßes Puppen Anzieh-Spiel für Mädchen - Kreativität &amp; Spaß garantiert! 💕</h3>
                 <div class="card-price">EUR 14.99</div>
@@ -182,7 +185,7 @@
         
         </div>
     
-    </div>
+    </main>
     <footer>
         <nav aria-label="Footer-Navigation">
             <a href="feed.xml">RSS Feed</a>
