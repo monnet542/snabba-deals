@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://monnet542.github.io/snabba-deals/sitemap.xml
